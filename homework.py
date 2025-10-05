@@ -1,25 +1,28 @@
-# ข้อ 3: แสดงกราฟ line plot ของผลลัพธ์ทุกข้อในกราฟเดียวกัน
-
 import matplotlib.pyplot as plt
+import numpy as np
 
-# สมมติจากข้อ 2 มีสมการที่คำนวณผลลัพธ์ไว้ เช่น
-# a = n + 2
-# b = n * 2
-# c = n ** 2
+# parameters
+n = 6
+a = 7
+i_values = np.arange(0, n+1)
 
-n_values = list(range(1, 11))  # กำหนดค่า n ตั้งแต่ 1-10
-a_values = [n + 2 for n in n_values]
-b_values = [n * 2 for n in n_values]
-c_values = [n ** 2 for n in n_values]
+# functions
+f1 = i_values + n                  # i + n
+f2 = a * i_values                  # a * i
+f3 = a ** i_values                 # a^i
+f4 = np.cumsum(i_values)           # Σ i
+f5 = np.cumprod(i_values+1)        # Π i (avoid multiplying by 0 at start)
 
-# วาดกราฟ
-plt.plot(n_values, a_values, label="n+2")
-plt.plot(n_values, b_values, label="n*2")
-plt.plot(n_values, c_values, label="n^2")
+# plot
+plt.plot(i_values, f1, label="i+n")
+plt.plot(i_values, f2, label="a×i")
+plt.plot(i_values, f3, label="a^i")
+plt.plot(i_values, f4, label="Σ a_i")
+plt.plot(i_values, f5, label="Π a_i")
 
-plt.xlabel("n")
-plt.ylabel("ผลลัพธ์")
-plt.title("Line plot ของผลลัพธ์จากสมการ")
+plt.xlabel("i")
+plt.ylabel("Value")
+plt.title(f"Line Plot of Equations (n={n}, a={a})")
 plt.legend()
 plt.grid(True)
 plt.show()
