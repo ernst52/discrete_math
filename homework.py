@@ -11,7 +11,7 @@ f1 = i_values + n                  # i + n
 f2 = a * i_values                  # a * i
 f3 = a ** i_values                 # a^i
 f4 = np.cumsum(i_values)           # Σ i
-f5 = np.cumprod(i_values+1)        # Π i (avoid multiplying by 0 at start)
+f5 = np.cumprod(i_values+1)        # Π i 
 
 # plot
 plt.plot(i_values, f1, label="i+n")
